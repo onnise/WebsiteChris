@@ -1,8 +1,14 @@
 .products-grid {
     @include container;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Reduced min-width for mobile
     gap: $spacing-md;
+    
+    @media (max-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr; // Single column on small screens
+        gap: $spacing-sm;
+        padding: 0 $spacing-sm;
+    }
     
     .product-card {
         background-color: $white;

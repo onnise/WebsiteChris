@@ -63,6 +63,24 @@ header .header-container .logo {
   color: #3E2723;
   letter-spacing: 1px;
 }
+header .header-container .hamburger {
+  display: none;
+  cursor: pointer;
+}
+header .header-container .hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  background-color: #3E2723;
+  transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+  header .header-container .hamburger {
+    display: block;
+    z-index: 1001;
+  }
+}
 header .header-container nav ul {
   display: flex;
   gap: 2rem;
@@ -90,8 +108,42 @@ header .header-container nav ul li a:hover::after {
 }
 @media (max-width: 768px) {
   header .header-container nav {
-    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 70%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   }
+  header .header-container nav.active {
+    transform: translateX(0);
+  }
+  header .header-container nav ul {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  header .header-container nav ul li {
+    opacity: 0;
+  }
+  header .header-container nav ul li a {
+    font-size: 1.2rem;
+  }
+}
+header .header-container.menu-open .hamburger span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+header .header-container.menu-open .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+header .header-container.menu-open .hamburger span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 
 .hero {
@@ -212,6 +264,12 @@ header .header-container nav ul li a:hover::after {
   user-select: none;
   -webkit-user-drag: none;
 }
+@media (max-width: 576px) {
+  .gallery-section .marquee-wrapper .marquee-track img {
+    height: 200px;
+    width: 280px;
+  }
+}
 .gallery-section .marquee-wrapper .marquee-track img:hover {
   filter: grayscale(0%);
   transform: scale(1.05);
@@ -306,8 +364,15 @@ header .header-container nav ul li a:hover::after {
   margin: 0 auto;
   padding: 0 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+}
+@media (max-width: 576px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
 }
 .products-grid .product-card {
   background-color: #FFFFFF;

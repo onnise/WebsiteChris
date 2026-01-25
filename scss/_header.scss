@@ -23,6 +23,26 @@ header {
       letter-spacing: 1px;
     }
 
+
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        
+        span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px;
+            background-color: $secondary-color;
+            @include transition;
+        }
+
+        @media (max-width: $breakpoint-tablet) {
+            display: block;
+            z-index: 1001; // Above the nav
+        }
+    }
+
     nav {
       ul {
         display: flex;
@@ -56,8 +76,51 @@ header {
       }
 
       @media (max-width: $breakpoint-tablet) {
-        display: none; // Mobile menu to be implemented
+        // display: none; // REMOVED
+        position: fixed;
+        top: 0;
+        right: 0; // Slide from right
+        height: 100vh;
+        width: 70%; // or 100%
+        background-color: $white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        @include transition(transform);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        
+        &.active {
+            transform: translateX(0);
+        }
+
+        ul {
+            flex-direction: column;
+            gap: 2rem;
+            
+            li {
+                opacity: 0; // For stagger animation
+                
+                a {
+                    font-size: 1.2rem;
+                }
+            }
+        }
       }
+    }
+    
+    // Hamburger animation class
+    &.menu-open .hamburger {
+        span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        span:nth-child(2) {
+            opacity: 0;
+        }
+        span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
     }
   }
 }
