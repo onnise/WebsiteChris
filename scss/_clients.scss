@@ -1,0 +1,45 @@
+.clients-section {
+    padding: 4rem 0;
+    background-color: #f9f9f9;
+    overflow: hidden;
+
+    .section-title {
+        margin-bottom: 3rem;
+    }
+
+    .track-window {
+        width: 100%;
+        overflow-x: hidden;
+        cursor: grab;
+        padding: 2rem 0; // Add some vertical padding for hover effects
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+
+    .marquee-track {
+        display: flex;
+        align-items: center;
+        gap: 4rem; // More spacing between logos
+        width: max-content;
+
+        img {
+            height: 80px; // Fixed height for logos
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-user-drag: none;
+
+            &:hover {
+                filter: grayscale(0%);
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+    }
+}

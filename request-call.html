@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Call | Teak International</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+    <link rel="stylesheet" href="css/style.css?v=1.7">
+    <style>
+        /* Inline styles for quick layout, will move to SCSS later if needed */
+        .request-page-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        .option-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .option-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .option-card:hover, .option-card.active {
+            border-color: #8D6E63;
+            background-color: #8D6E63;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .option-card h3 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .form-section {
+            display: none;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .question-group {
+            margin-bottom: 2rem;
+        }
+
+        .question-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #3E2723;
+            font-size: 1.1rem;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .checkbox-option, .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-option input, .radio-option input {
+            accent-color: #8D6E63;
+            width: 18px;
+            height: 18px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .contact-inputs {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #3E2723;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .back-link:hover {
+            color: #8D6E63;
+        }
+
+        /* Override intl-tel-input style to match form */
+        .iti {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main class="request-page-container">
+        <a href="javascript:history.back()" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Back
+        </a>
+        <div class="section-title">
+            <h2>Request a Call</h2>
+            <div class="divider"></div>
+            <p>Please select an option below to get started</p>
+        </div>
+
+        <div class="option-cards">
+            <div class="option-card" id="option1Btn" onclick="selectOption(1)">
+                <h3>B2B</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Business to Business</p>
+            </div>
+            <div class="option-card" id="option2Btn" onclick="selectOption(2)">
+                <h3>B2C</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Business to Consumer</p>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div id="formSection" class="form-section">
+            <form id="projectForm" onsubmit="submitForm(event)">
+                <input type="hidden" id="customer_type" name="customer_type" value="B2B">
+
+                <!-- Contact Info -->
+                <div class="question-group">
+                    <label class="question-label">Contact Information</label>
+                    <div class="contact-inputs">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 1: Project Type (B2B Only) -->
+                <div class="question-group" id="group-project-type">
+                    <label class="question-label">1) What type of projects is this for? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="project_type" value="Custom Vanity's">
+                            Custom Vanity's
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="project_type" value="Custom Closets">
+                            Custom Closets
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="project_type" value="Kitchen or Vanity">
+                            Kitchen or Vanity
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="project_type" value="Pre-made Kitchen">
+                            Pre-made Kitchen
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 1: Role (B2C Only) -->
+                <div class="question-group" id="group-role" style="display: none;">
+                    <label class="question-label">1) What is your role?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="role" value="Homeowner" onchange="toggleOtherRole(this)">
+                            Homeowner
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="role" value="Interior Designer" onchange="toggleOtherRole(this)">
+                            Interior Designer
+                        </label>
+                         <label class="radio-option">
+                            <input type="radio" name="role" value="Contractor" onchange="toggleOtherRole(this)">
+                            Contractor
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="role" value="Other" onchange="toggleOtherRole(this)">
+                            Other
+                        </label>
+                    </div>
+                    <!-- Hidden input for "Other" role specification -->
+                    <div id="other-role-input-container" style="display: none; margin-top: 0.5rem; margin-left: 0;">
+                        <input type="text" name="role_other" placeholder="Please specify..." style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; font-size: 0.9rem;">
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-group">
+                    <label class="question-label">2) When are you looking to get this done?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="1-2 Weeks" required>
+                            1-2 Weeks
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="3-4 Weeks">
+                            3-4 Weeks
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="Not anytime soon">
+                            Not anytime soon
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-group">
+                    <label class="question-label">3) Do you have drawings made?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="drawings" value="Yes" required>
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="drawings" value="No">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="cta-button" style="width: 100%;">Submit Request</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script>
+        // Initialize Phone Input with Country Code
+        const phoneInput = document.querySelector("#phone");
+        const iti = window.intlTelInput(phoneInput, {
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+            preferredCountries: ["ca", "us", "lb"], // Canada, US, Lebanon (based on footer info)
+            separateDialCode: true,
+            autoPlaceholder: "aggressive"
+        });
+
+        // Dynamic Max Length Validation
+        let maxDigits = 15; // default fallback
+
+        function updateMaxLength() {
+            // Get the selected country data
+            const countryData = iti.getSelectedCountryData();
+            
+            // Explicitly set max digits for known specific requests
+            if (countryData.iso2 === 'lb') {
+                maxDigits = 8;
+            } else if (countryData.iso2 === 'us' || countryData.iso2 === 'ca') {
+                maxDigits = 10;
+            } else {
+                // Fallback: Use the example number from utils if available to guess length
+                // This runs asynchronously if utils script is loading, but we can try
+                if (window.intlTelInputUtils) {
+                    const example = window.intlTelInputUtils.getExampleNumber(countryData.iso2, 0, 0);
+                    if (example) {
+                        // Count digits in example
+                        const digits = example.replace(/\D/g, '');
+                        maxDigits = digits.length;
+                    } else {
+                         maxDigits = 15;
+                    }
+                } else {
+                    maxDigits = 15;
+                }
+            }
+            // console.log("Max digits set to:", maxDigits);
+        }
+
+        // Listen for country changes
+        phoneInput.addEventListener('countrychange', updateMaxLength);
+        
+        // Wait for utils to load to set initial max length correctly
+        iti.promise.then(function() {
+            updateMaxLength();
+        });
+
+        // Restrict input to numbers only and enforce max length
+        phoneInput.addEventListener('input', function(e) {
+            // 1. Remove non-numeric chars (keeping basic formatting chars allowed by user preference, 
+            // but for length check we only care about digits)
+            let val = this.value;
+            
+            // Remove letters/invalid chars immediately
+            val = val.replace(/[^\d\s\-\+]/g, '');
+            
+            // 2. Check digit count
+            // Count current digits
+            const currentDigits = val.replace(/\D/g, '');
+            
+            if (currentDigits.length > maxDigits) {
+                // Truncate to maxDigits
+                // We need to preserve formatting, so we remove the last char until digits count matches
+                let trimmed = val;
+                while (trimmed.replace(/\D/g, '').length > maxDigits) {
+                    trimmed = trimmed.slice(0, -1);
+                }
+                val = trimmed;
+            }
+            
+            if (this.value !== val) {
+                this.value = val;
+            }
+        });
+
+        function toggleOtherRole(radio) {
+            const otherContainer = document.getElementById('other-role-input-container');
+            const otherInput = otherContainer.querySelector('input');
+            
+            if (radio.value === 'Other') {
+                otherContainer.style.display = 'block';
+                otherInput.required = true;
+                otherInput.focus();
+            } else {
+                otherContainer.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = ''; // Clear input when hiding
+            }
+        }
+
+        function selectOption(option) {
+            // Check if same option is clicked to prevent accidental reset
+            const btnId = option === 1 ? 'option1Btn' : 'option2Btn';
+            if (document.getElementById(btnId).classList.contains('active')) return;
+
+            // Reset active states
+            document.querySelectorAll('.option-card').forEach(c => c.classList.remove('active'));
+            
+            // Activate selected option
+            document.getElementById(btnId).classList.add('active');
+            
+            // Show form
+            document.getElementById('formSection').classList.add('active');
+            
+            // Clear Shared Questions (Q2 & Q3)
+            document.querySelectorAll('input[name="timeline"]').forEach(el => el.checked = false);
+            document.querySelectorAll('input[name="drawings"]').forEach(el => el.checked = false);
+
+            // Toggle fields based on option
+            const customerTypeInput = document.getElementById('customer_type');
+            const groupProjectType = document.getElementById('group-project-type');
+            const groupRole = document.getElementById('group-role');
+            
+            if (option === 1) {
+                // B2B
+                customerTypeInput.value = 'B2B';
+                groupProjectType.style.display = 'block';
+                groupRole.style.display = 'none';
+                
+                // Clear B2C fields (Role)
+                const roleRadios = groupRole.querySelectorAll('input[type="radio"]');
+                roleRadios.forEach(radio => radio.checked = false);
+                
+                const otherInput = groupRole.querySelector('input[name="role_other"]');
+                if (otherInput) {
+                    otherInput.value = '';
+                    otherInput.required = false;
+                }
+                const otherContainer = document.getElementById('other-role-input-container');
+                if (otherContainer) otherContainer.style.display = 'none';
+
+            } else {
+                // B2C
+                customerTypeInput.value = 'B2C';
+                groupProjectType.style.display = 'none';
+                groupRole.style.display = 'block';
+
+                // Clear B2B fields (Project Type)
+                const projectCheckboxes = groupProjectType.querySelectorAll('input[type="checkbox"]');
+                projectCheckboxes.forEach(cb => cb.checked = false);
+            }
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Collect Data
+            const formData = new FormData(e.target);
+            const data = {};
+            
+            data.customer_type = formData.get('customer_type');
+            data.fullname = formData.get('fullname');
+            data.email = formData.get('email');
+            data.phone = iti.getNumber(); // Get full international format
+            
+            if (data.customer_type === 'B2B') {
+                data.project_type = formData.getAll('project_type'); // Returns array of checked values
+            } else {
+                data.role = formData.get('role');
+                data.role_other = formData.get('role_other');
+            }
+            
+            data.timeline = formData.get('timeline');
+            data.drawings = formData.get('drawings');
+
+            // Send to Google Script
+            // We use URLSearchParams and no-cors mode to avoid CORS errors
+            const params = new URLSearchParams();
+            params.append('customer_type', data.customer_type);
+            params.append('fullname', data.fullname);
+            params.append('email', data.email);
+            params.append('phone', data.phone);
+            params.append('timeline', data.timeline);
+            params.append('drawings', data.drawings);
+            
+            if (data.customer_type === 'B2B') {
+                // For arrays (checkboxes), append each one
+                const types = formData.getAll('project_type');
+                types.forEach(val => params.append('project_type', val));
+            } else {
+                params.append('role', data.role);
+                if (data.role_other) params.append('role_other', data.role_other);
+            }
+
+            fetch('https://script.google.com/macros/s/AKfycbzjhAZs2WHHMJ8esNlP5mMapHt2T8OY8nR0JZPUrGKKICN49ovt4N6UDSUCIGGV_YU8/exec', {
+                method: 'POST',
+                mode: 'no-cors', // IMPORTANT: This ignores CORS but makes response opaque
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString()
+            })
+            .then(response => {
+                // With no-cors, we can't check response.ok or read JSON.
+                // We assume if the network call finished, it succeeded.
+                
+                // Redirect to Thank You Page
+                window.location.href = 'thank-you.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your request. Please try again.');
+            })
+            .finally(() => {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>

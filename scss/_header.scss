@@ -1,0 +1,63 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba($white, 0.95);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: $spacing-sm 0;
+  @include transition;
+
+  .header-container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-family: $font-family-heading;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $secondary-color;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      ul {
+        display: flex;
+        gap: $spacing-md;
+        align-items: center;
+
+        li {
+          a {
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -5px;
+              left: 0;
+              width: 0;
+              height: 2px;
+              background-color: $primary-color;
+              @include transition(width);
+            }
+
+            &:hover::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      @media (max-width: $breakpoint-tablet) {
+        display: none; // Mobile menu to be implemented
+      }
+    }
+  }
+}

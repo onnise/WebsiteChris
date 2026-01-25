@@ -1,0 +1,64 @@
+@import 'variables';
+@import 'mixins';
+@import 'reset';
+@import 'animations';
+@import 'header';
+@import 'hero';
+// @import 'gallery';
+@import 'gallery_new';
+@import 'process';
+@import 'products';
+@import 'reviews';
+@import 'clients';
+@import 'contact';
+@import 'footer';
+
+// Global Styles
+section {
+    padding: $spacing-xl 0;
+    
+    @media (max-width: $breakpoint-tablet) {
+        padding: $spacing-lg 0;
+    }
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    h2 {
+        font-family: $font-family-heading;
+        font-size: 2.5rem;
+        color: $secondary-color;
+        margin-bottom: $spacing-xs;
+    }
+    
+    .divider {
+        width: 60px;
+        height: 3px;
+        background-color: $primary-color;
+        /* margin: 0 auto; - No longer needed with flex align-items: center, but keeping implies no harm */
+    }
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background-color: $primary-color;
+    color: $white;
+    border-radius: 2px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    @include transition(background-color);
+    
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}

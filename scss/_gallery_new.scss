@@ -1,0 +1,60 @@
+.gallery-section {
+    padding: $spacing-lg 0;
+    background-color: $background-color;
+    overflow: hidden;
+    
+    .marquee-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+        
+        .track-window {
+            width: 100%;
+            overflow: hidden; /* Hide all scrollbars */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+            
+            &::-webkit-scrollbar {
+                display: none; /* Chrome/Safari */
+            }
+
+            cursor: grab;
+            
+            &:active {
+                cursor: grabbing;
+            }
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: $spacing-sm;
+            width: max-content;
+            
+            // Remove CSS animations as we are using JS
+            // &.scroll-left { animation: scrollLeft 40s linear infinite; }
+            // &.scroll-right { animation: scrollRight 40s linear infinite; }
+            
+            img {
+                height: 250px;
+                width: 350px;
+                object-fit: cover;
+                border-radius: 8px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+                filter: grayscale(20%);
+                @include transition;
+                
+                // Prevent image dragging behavior
+                user-select: none;
+                -webkit-user-drag: none;
+                
+                &:hover {
+                    filter: grayscale(0%);
+                    transform: scale(1.05);
+                    z-index: 10;
+                    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+                }
+            }
+        }
+    }
+}
+// Keyframes removed as they are no longer used

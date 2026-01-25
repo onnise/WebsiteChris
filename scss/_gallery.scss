@@ -1,0 +1,39 @@
+.gallery-marquee {
+    width: 100%;
+    overflow: hidden;
+    background-color: $white;
+    padding: $spacing-lg 0;
+    
+    .marquee-content {
+        display: flex;
+        gap: $spacing-md;
+        width: max-content;
+        animation: scroll 60s linear infinite;
+        
+        &:hover {
+            animation-play-state: paused;
+        }
+        
+        img {
+            height: 300px;
+            width: auto;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            @include transition(transform);
+            
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); // Move half the width (assuming content is duplicated)
+    }
+}

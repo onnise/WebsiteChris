@@ -1,0 +1,46 @@
+footer {
+    background-color: $secondary-color;
+    color: $white;
+    padding: $spacing-lg 0 $spacing-md;
+    
+    .footer-container {
+        @include container;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: $spacing-lg;
+        margin-bottom: $spacing-md;
+        
+        h4 {
+            font-family: $font-family-heading;
+            font-size: 1.2rem;
+            margin-bottom: $spacing-sm;
+            color: $accent-color;
+        }
+        
+        ul li {
+            margin-bottom: 0.5rem;
+            
+            a {
+                color: rgba($white, 0.8);
+                @include transition(color);
+                
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+        
+        p {
+            color: rgba($white, 0.8);
+            line-height: 1.8;
+        }
+    }
+    
+    .copyright {
+        text-align: center;
+        padding-top: $spacing-md;
+        border-top: 1px solid rgba($white, 0.1);
+        color: rgba($white, 0.6);
+        font-size: 0.9rem;
+    }
+}
