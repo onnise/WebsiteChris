@@ -37,6 +37,36 @@ ul {
   transform: translateY(0);
 }
 
+.scroll-from-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.scroll-from-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-from-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.scroll-from-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-zoom-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.scroll-zoom-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
 @keyframes navLinkFade {
   from {
     opacity: 0;

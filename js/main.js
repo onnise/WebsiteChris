@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.scroll-animate').forEach(el => {
+    document.querySelectorAll('.scroll-animate, .scroll-from-left, .scroll-from-right, .scroll-zoom-in').forEach(el => {
         observer.observe(el);
     });
 

@@ -1,3 +1,4 @@
+// Base animation class (Fade Up default)
 .scroll-animate {
     opacity: 0;
     transform: translateY(30px);
@@ -6,6 +7,42 @@
     &.visible {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+// Slide in from Left
+.scroll-from-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+    &.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Slide in from Right
+.scroll-from-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+    &.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Zoom In
+.scroll-zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+    &.visible {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
