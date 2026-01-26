@@ -48,6 +48,10 @@ header {
     }
 
     nav {
+      display: flex; // Add flex for desktop to align ul and button
+      align-items: center;
+      gap: $spacing-md;
+
       ul {
         display: flex;
         gap: $spacing-md;
@@ -80,7 +84,6 @@ header {
       }
 
       @media (max-width: $breakpoint-tablet) {
-        // display: none; // REMOVED
         position: fixed;
         top: 0;
         right: 0; // Slide from right
@@ -89,11 +92,12 @@ header {
         background-color: $white;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: center; // Keep centered vertically, or use space-between
         align-items: center;
         transform: translateX(100%);
         @include transition(transform);
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 999; // Ensure it's below the hamburger (z-index 1001)
         
         &.active {
             transform: translateX(0);
@@ -102,6 +106,7 @@ header {
         ul {
             flex-direction: column;
             gap: 2rem;
+            margin-bottom: 2rem; // Space between links and button
             
             li {
                 opacity: 0; // For stagger animation
@@ -136,6 +141,7 @@ header {
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      white-space: nowrap; // Fix bad text wrapping
       @include transition;
       box-shadow: 0 4px 15px rgba($primary-color, 0.3);
 
@@ -145,9 +151,14 @@ header {
         box-shadow: 0 6px 20px rgba($primary-color, 0.4);
       }
 
-      @media (max-width: $breakpoint-mobile) {
-        padding: 0.5rem 1rem;
-        font-size: 0.75rem;
+      @media (max-width: $breakpoint-tablet) {
+        // Mobile styles for button inside nav
+        opacity: 0; // For animation
+        width: 80%;
+        text-align: center;
+        margin-top: 1rem;
+        padding: 1rem; // Larger touch target
+        font-size: 1rem;
       }
     }
   }

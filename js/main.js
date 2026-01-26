@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
-    const navLinks = document.querySelectorAll('nav li');
+    const navLinks = document.querySelectorAll('nav li, nav .cta-button');
     const headerContainer = document.querySelector('.header-container');
 
     if(hamburger) {
