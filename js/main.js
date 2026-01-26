@@ -58,62 +58,55 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryWindows.forEach(windowEl => {
         let isDown = false;
         let startX;
-        let scrollLeft;
+        let scrollLeftBase; // Renamed to clear confusion with DOM scrollLeft
         let animationId;
         
         // Auto-scroll settings
         const direction = windowEl.dataset.direction || 'left';
-        const speed = 0.2; // Pixels per frame
-        
-        // Initial scroll position for 'right' direction to show movement correctly
-        
-        // Setup infinite loop check
-        const track = windowEl.querySelector('.marquee-track');
+        const speed = 1.0; 
         
         let scrollPos = windowEl.scrollLeft;
 
         const animate = () => {
+            // 1. Update State
             if (!isDown) {
                 if (direction === 'left') {
                     scrollPos += speed;
-                    // Reset if reached end of first set
-                    if (scrollPos >= windowEl.scrollWidth / 2) {
-                        scrollPos = 0;
-                    }
                 } else {
                     scrollPos -= speed;
-                     // Reset if reached start
-                    if (scrollPos <= 0) {
-                        scrollPos = windowEl.scrollWidth / 2;
-                        // Prevent "stuck" behavior if content is smaller than viewport
-                        const maxScroll = windowEl.scrollWidth - windowEl.clientWidth;
-                        if (scrollPos > maxScroll) {
-                            scrollPos = maxScroll;
-                        }
-                    }
                 }
-                windowEl.scrollLeft = scrollPos;
-            } else {
-                // Sync accumulated position with manual scroll
-                scrollPos = windowEl.scrollLeft;
             }
+            
+            // 2. Handle Wrapping (Infinite Scroll)
+            const maxScroll = windowEl.scrollWidth / 2;
+            // Guard against division by zero or uninitialized width
+            if (maxScroll > 0) {
+                if (scrollPos >= maxScroll) {
+                    scrollPos -= maxScroll;
+                    if (isDown) scrollLeftBase -= maxScroll;
+                } else if (scrollPos <= 0) {
+                    scrollPos += maxScroll;
+                    if (isDown) scrollLeftBase += maxScroll;
+                }
+            }
+
+            // 3. Render (Update DOM)
+            windowEl.scrollLeft = scrollPos;
+            
             animationId = requestAnimationFrame(animate);
         };
         
-        // Ensure proper initialization after images load
         const initScroll = () => {
             if (direction === 'right') {
                  scrollPos = windowEl.scrollWidth / 2;
-                 windowEl.scrollLeft = scrollPos;
-                 // Sync if initial position was clamped (content < viewport)
-                 if (windowEl.scrollLeft < scrollPos) {
-                     scrollPos = windowEl.scrollLeft;
+                 // Sync if initial position was clamped
+                 if (scrollPos > windowEl.scrollWidth - windowEl.clientWidth) {
+                     scrollPos = windowEl.scrollWidth - windowEl.clientWidth;
                  }
             }
             animate();
         };
 
-        // If images are already loaded
         if (document.readyState === 'complete') {
             initScroll();
         } else {
@@ -125,39 +118,26 @@ document.addEventListener('DOMContentLoaded', () => {
             isDown = true;
             windowEl.style.cursor = 'grabbing';
             startX = e.pageX - windowEl.offsetLeft;
-            scrollLeft = windowEl.scrollLeft;
+            scrollLeftBase = scrollPos; // Capture current calculated pos
         });
 
-        windowEl.addEventListener('mouseleave', () => {
+        const stopDrag = () => {
             isDown = false;
             windowEl.style.cursor = 'grab';
-        });
+        };
 
-        windowEl.addEventListener('mouseup', () => {
-            isDown = false;
-            windowEl.style.cursor = 'grab';
-        });
+        windowEl.addEventListener('mouseleave', stopDrag);
+        windowEl.addEventListener('mouseup', stopDrag);
 
         windowEl.addEventListener('mousemove', (e) => {
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - windowEl.offsetLeft;
-            const walk = (x - startX) * 2; // Scroll-fast
-            windowEl.scrollLeft = scrollLeft - walk;
-            
-            // Check infinite scroll during drag
-            if (windowEl.scrollLeft >= windowEl.scrollWidth / 2) {
-                 windowEl.scrollLeft = 0;
-                 scrollLeft = 0;
-                 startX = x;
-            } else if (windowEl.scrollLeft <= 0) {
-                 windowEl.scrollLeft = windowEl.scrollWidth / 2;
-                 scrollLeft = windowEl.scrollWidth / 2;
-                 startX = x;
-            }
+            const walk = (x - startX) * 2; 
+            scrollPos = scrollLeftBase - walk; // Update state, don't touch DOM
         });
         
-        // Touch events for mobile
+        // Touch events
         let touchStartX = 0;
         let touchStartY = 0;
 
@@ -166,12 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
             touchStartX = e.touches[0].pageX;
             touchStartY = e.touches[0].pageY;
             startX = e.touches[0].pageX - windowEl.offsetLeft;
-            scrollLeft = windowEl.scrollLeft;
+            scrollLeftBase = scrollPos;
         }, { passive: true });
 
-        windowEl.addEventListener('touchend', () => {
-            isDown = false;
-        });
+        windowEl.addEventListener('touchend', stopDrag);
 
         windowEl.addEventListener('touchmove', (e) => {
             if (!isDown) return;
@@ -181,25 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const xDiff = Math.abs(xPage - touchStartX);
             const yDiff = Math.abs(yPage - touchStartY);
 
-            // If horizontal movement dominates, assume carousel drag
             if (xDiff > yDiff) {
-                if (e.cancelable) {
-                    e.preventDefault();
-                }
-                
+                if (e.cancelable) e.preventDefault();
                 const x = xPage - windowEl.offsetLeft;
                 const walk = (x - startX) * 2;
-                windowEl.scrollLeft = scrollLeft - walk;
-                
-                if (windowEl.scrollLeft >= windowEl.scrollWidth / 2) {
-                     windowEl.scrollLeft = 0;
-                     scrollLeft = 0;
-                     startX = x;
-                } else if (windowEl.scrollLeft <= 0) {
-                     windowEl.scrollLeft = windowEl.scrollWidth / 2;
-                     scrollLeft = windowEl.scrollWidth / 2;
-                     startX = x;
-                }
+                scrollPos = scrollLeftBase - walk;
             }
         }, { passive: false });
     });
