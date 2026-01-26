@@ -142,26 +142,35 @@
             function runConfetti() {
                 if (typeof confetti !== 'function') return;
 
-                const duration = 1000;
+                // Mobile optimization:
+                // 1. Detect mobile by screen width (e.g. < 768px)
+                // 2. Reduce particle count slightly if mobile to ensure performance
+                // 3. Keep side-cannons as they look good on mobile too, but ensure disableForReducedMotion
+                
+                const isMobile = window.innerWidth < 768;
+                const particleCount = isMobile ? 3 : 5; 
+                const duration = 500; // 0.5 seconds
                 const end = Date.now() + duration;
                 const colors = ['#8D6E63', '#3E2723', '#D7CCC8', '#FFD700', '#ffffff'];
 
                 (function frame() {
                     confetti({
-                        particleCount: 5,
+                        particleCount: particleCount,
                         angle: 60,
                         spread: 55,
                         origin: { x: 0 },
                         colors: colors,
-                        zIndex: 2000 // Ensure visibility over other elements
+                        zIndex: 2000,
+                        disableForReducedMotion: true
                     });
                     confetti({
-                        particleCount: 5,
+                        particleCount: particleCount,
                         angle: 120,
                         spread: 55,
                         origin: { x: 1 },
                         colors: colors,
-                        zIndex: 2000
+                        zIndex: 2000,
+                        disableForReducedMotion: true
                     });
 
                     if (Date.now() < end) {
