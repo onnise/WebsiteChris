@@ -503,29 +503,20 @@
                 if (data.role_other) params.append('role_other', data.role_other);
             }
 
+            // Optimistic UI: Send request and redirect immediately
+            // We use keepalive: true to ensure the request completes in the background
             fetch('https://script.google.com/macros/s/AKfycbzjhAZs2WHHMJ8esNlP5mMapHt2T8OY8nR0JZPUrGKKICN49ovt4N6UDSUCIGGV_YU8/exec', {
                 method: 'POST',
-                mode: 'no-cors', // IMPORTANT: This ignores CORS but makes response opaque
+                mode: 'no-cors',
+                keepalive: true, // Ensure request survives page navigation
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: params.toString()
-            })
-            .then(response => {
-                // With no-cors, we can't check response.ok or read JSON.
-                // We assume if the network call finished, it succeeded.
-                
-                // Redirect to Thank You Page
-                window.location.href = 'thank-you.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your request. Please try again.');
-            })
-            .finally(() => {
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
             });
+
+            // Redirect immediately to Thank You page (Optimistic UI)
+            window.location.href = 'thank-you.html';
         }
     </script>
 </body>
