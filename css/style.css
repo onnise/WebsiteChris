@@ -63,6 +63,11 @@ header .header-container .logo {
   color: #3E2723;
   letter-spacing: 1px;
 }
+@media (max-width: 576px) {
+  header .header-container .logo {
+    font-size: 1.1rem;
+  }
+}
 header .header-container .hamburger {
   display: none;
   cursor: pointer;
@@ -145,6 +150,29 @@ header .header-container.menu-open .hamburger span:nth-child(2) {
 header .header-container.menu-open .hamburger span:nth-child(3) {
   transform: rotate(45deg) translate(-5px, -6px);
 }
+header .header-container .cta-button {
+  background-color: #8D6E63;
+  color: #FFFFFF;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(141, 110, 99, 0.3);
+}
+header .header-container .cta-button:hover {
+  background-color: rgb(111.0375, 86.625, 77.9625);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(141, 110, 99, 0.4);
+}
+@media (max-width: 576px) {
+  header .header-container .cta-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}
 
 .hero {
   height: 100vh;
@@ -224,7 +252,7 @@ header .header-container.menu-open .hamburger span:nth-child(3) {
   }
 }
 .gallery-section {
-  padding: 4rem 0;
+  padding: 2rem 0;
   background-color: #FAFAFA;
   overflow: hidden;
 }
@@ -282,7 +310,7 @@ header .header-container.menu-open .hamburger span:nth-child(3) {
   margin: 0 auto;
   padding: 0 1rem;
   text-align: center;
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 .process-section .process-grid {
   display: grid;
@@ -677,7 +705,7 @@ header .header-container.menu-open .hamburger span:nth-child(3) {
 }
 
 .clients-section {
-  padding: 4rem 0;
+  padding: 2rem 0;
   background-color: #f9f9f9;
   overflow: hidden;
 }

@@ -245,6 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
             dots.forEach(d => d.classList.remove('active'));
             if(dots[index]) dots[index].classList.add('active');
         }
+    }
+
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');

@@ -21,6 +21,10 @@ header {
       font-weight: bold;
       color: $secondary-color;
       letter-spacing: 1px;
+
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 1.1rem;
+      }
     }
 
 
@@ -121,6 +125,30 @@ header {
         span:nth-child(3) {
             transform: rotate(45deg) translate(-5px, -6px);
         }
+    }
+
+    .cta-button {
+      background-color: $primary-color;
+      color: $white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px; // Pill shape
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      @include transition;
+      box-shadow: 0 4px 15px rgba($primary-color, 0.3);
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba($primary-color, 0.4);
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+      }
     }
   }
 }
