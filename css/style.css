@@ -77,6 +77,30 @@ ul {
     transform: translateX(0);
   }
 }
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+}
+@keyframes float-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 header {
   position: fixed;
   top: 0;
@@ -357,6 +381,44 @@ header .header-container .cta-button:hover {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+#about {
+  position: relative;
+  overflow: hidden;
+}
+#about .bg-decoration {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+#about .bg-decoration.circle-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(141, 110, 99, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  top: -10%;
+  left: -5%;
+  animation: float-slow 15s ease-in-out infinite;
+}
+#about .bg-decoration.circle-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(62, 39, 35, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  bottom: -5%;
+  right: -5%;
+  animation: float-reverse 18s ease-in-out infinite;
+}
+#about .bg-decoration.pattern-dots {
+  width: 200px;
+  height: 200px;
+  background-image: radial-gradient(rgba(141, 110, 99, 0.2) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  top: 20%;
+  right: 10%;
+  opacity: 0.6;
+  animation: float-rotate 60s linear infinite;
+}
+
 .process-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -437,6 +499,25 @@ header .header-container .cta-button:hover {
   color: #757575;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+#products {
+  position: relative;
+  overflow: hidden;
+}
+#products .bg-decoration {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+#products .bg-decoration.square-1 {
+  width: 500px;
+  height: 500px;
+  border: 2px solid rgba(141, 110, 99, 0.05);
+  top: 5%;
+  left: -200px;
+  transform: rotate(45deg);
+  animation: float-rotate 40s linear infinite;
 }
 
 .products-grid {
