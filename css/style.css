@@ -390,6 +390,11 @@ header .header-container .cta-button:hover {
   z-index: -1;
   pointer-events: none;
 }
+@media (max-width: 768px) {
+  #about .bg-decoration {
+    display: none;
+  }
+}
 #about .bg-decoration.circle-1 {
   width: 400px;
   height: 400px;
@@ -518,6 +523,11 @@ header .header-container .cta-button:hover {
   position: absolute;
   z-index: -1;
   pointer-events: none;
+}
+@media (max-width: 768px) {
+  #products .bg-decoration {
+    display: none;
+  }
 }
 #products .bg-decoration.square-1 {
   width: 500px;

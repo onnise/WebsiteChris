@@ -7,6 +7,10 @@
         z-index: -1;
         pointer-events: none;
         
+        @media (max-width: $breakpoint-tablet) {
+            display: none;
+        }
+        
         &.square-1 {
             width: 500px;
             height: 500px;
