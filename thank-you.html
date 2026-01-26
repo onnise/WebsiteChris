@@ -133,5 +133,53 @@
 
         <a href="index.html" class="back-home">Return to Home Page</a>
     </main>
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to run the animation
+            function runConfetti() {
+                if (typeof confetti !== 'function') return;
+
+                const duration = 3000;
+                const end = Date.now() + duration;
+                const colors = ['#8D6E63', '#3E2723', '#D7CCC8', '#FFD700', '#ffffff'];
+
+                (function frame() {
+                    confetti({
+                        particleCount: 5,
+                        angle: 60,
+                        spread: 55,
+                        origin: { x: 0 },
+                        colors: colors,
+                        zIndex: 2000 // Ensure visibility over other elements
+                    });
+                    confetti({
+                        particleCount: 5,
+                        angle: 120,
+                        spread: 55,
+                        origin: { x: 1 },
+                        colors: colors,
+                        zIndex: 2000
+                    });
+
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                }());
+            }
+
+            // Check if library is loaded, if not, wait for it
+            if (typeof confetti === 'function') {
+                runConfetti();
+            } else {
+                const script = document.querySelector('script[src*="canvas-confetti"]');
+                if (script) {
+                    script.onload = runConfetti;
+                }
+            }
+        });
+    </script>
 </body>
 </html>

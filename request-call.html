@@ -413,9 +413,12 @@
                 groupProjectType.style.display = 'block';
                 groupRole.style.display = 'none';
                 
-                // Clear B2C fields (Role)
+                // Clear B2C fields (Role) and remove required
                 const roleRadios = groupRole.querySelectorAll('input[type="radio"]');
-                roleRadios.forEach(radio => radio.checked = false);
+                roleRadios.forEach(radio => {
+                    radio.checked = false;
+                    radio.required = false;
+                });
                 
                 const otherInput = groupRole.querySelector('input[name="role_other"]');
                 if (otherInput) {
@@ -431,6 +434,10 @@
                 groupProjectType.style.display = 'none';
                 groupRole.style.display = 'block';
 
+                // Make Role required for B2C
+                const roleRadios = groupRole.querySelectorAll('input[type="radio"]');
+                roleRadios.forEach(radio => radio.required = true);
+
                 // Clear B2B fields (Project Type)
                 const projectCheckboxes = groupProjectType.querySelectorAll('input[type="checkbox"]');
                 projectCheckboxes.forEach(cb => cb.checked = false);
@@ -441,12 +448,25 @@
             e.preventDefault();
             
             const submitBtn = e.target.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerText;
+            const originalBtnText = "Submit Request"; // Hardcoded as it was easier than extracting
+            
+            // Basic Validation for B2B Project Type (Checkboxes)
+            // HTML5 required doesn't work well for "at least one checkbox"
+            const formData = new FormData(e.target);
+            const customerType = formData.get('customer_type');
+
+            if (customerType === 'B2B') {
+                const projectTypes = formData.getAll('project_type');
+                if (projectTypes.length === 0) {
+                    alert('Please select at least one project type.');
+                    return; // Stop submission
+                }
+            }
+
             submitBtn.innerText = 'Sending...';
             submitBtn.disabled = true;
 
             // Collect Data
-            const formData = new FormData(e.target);
             const data = {};
             
             data.customer_type = formData.get('customer_type');
