@@ -39,10 +39,7 @@
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">Bio</a></li>
                 </ul>
                 <a href="request-call.html" class="cta-button">Request a Call</a>
             </nav>
@@ -50,11 +47,24 @@
     </header>
 
     <main>
-        <section id="home" class="hero has-bg" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop');">
+        <section id="home" class="hero has-bg">
+            <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop">
+                <!-- Local Video -->
+                <source src="video/7578547-hd_1920_1080_30fps_2.mp4" type="video/mp4">
+            </video>
             <div class="hero-content">
-                <h1>Welcome to the Future of Millwork</h1>
-                <p>Exceptional custom furniture and millwork for residential and commercial spaces.</p>
-                <a href="#products" class="btn">Explore Collections</a>
+                <h1>Timeless Craftsmanship for Exceptional Spaces</h1>
+                <p class="hero-subtitle">Bespoke teak furniture and architectural millwork designed for luxury residential and commercial projects worldwide.</p>
+                
+                <div class="hero-value-props">
+                    <span>✓ Handcrafted Precision</span>
+                    <span>✓ Sustainably Sourced Teak</span>
+                    <span>✓ International Projects & Shipping</span>
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#about" class="btn btn-secondary">Our Story</a>
             </div>
         </section>
 
@@ -63,496 +73,17 @@
             <div class="bg-decoration circle-2"></div>
             <div class="bg-decoration circle-3"></div>
             <div class="bg-decoration pattern-dots"></div>
-            <div class="section-title">
-                <h2>Our Process</h2>
+            
+            <!-- Company Biography Section -->
+            <div class="bio-container">
+                <h2>Crafting Excellence</h2>
                 <div class="divider"></div>
-            </div>
-            <div class="process-section">
-                <p style="max-width: 800px; margin: 0 auto 3rem; color: #555; font-size: 1.1rem;">
-                    From concept to completion, we ensure every detail meets the highest standards of luxury and functionality.
+                <p>
+                    At Teak International, we design and produce bespoke teak furniture and architectural millwork for luxury residential and commercial spaces. Our work is defined by precision craftsmanship, sustainably sourced materials, and close collaboration with designers, architects, and clients. From concept to installation, every detail is carefully executed to create timeless pieces that elevate the spaces they inhabit.
                 </p>
-                <div class="process-grid">
-                    <div class="process-card scroll-from-left">
-                        <div class="icon-wrapper">
-                            <!-- Design Icon -->
-                            <svg width="40" height="40" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
-                            </svg>
-                        </div>
-                        <h3>Design</h3>
-                        <p>We collaborate with you to create tailored designs that blend aesthetic beauty with practical functionality.</p>
-                    </div>
-                    
-                    <div class="process-card scroll-animate" style="animation-delay: 0.2s;">
-                         <div class="icon-wrapper">
-                            <!-- Build Icon -->
-                            <svg width="40" height="40" viewBox="0 0 24 24">
-                                <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-                            </svg>
-                        </div>
-                        <h3>Build</h3>
-                        <p>Our master craftsmen bring designs to life using the finest sustainably sourced materials and precision techniques.</p>
-                    </div>
-                    
-                    <div class="process-card scroll-from-right" style="animation-delay: 0.4s;">
-                         <div class="icon-wrapper">
-                            <!-- Install Icon -->
-                            <svg width="40" height="40" viewBox="0 0 24 24">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-8-2h2v-2h-2v2zm0-4h2V8h-2v5z"/>
-                            </svg>
-                        </div>
-                        <h3>Install</h3>
-                        <p>We ensure a seamless installation process, respecting your space and delivering a flawless final result.</p>
-                    </div>
-                </div>
+                <a href="request-call.html" class="cta-button">Request a Call</a>
             </div>
         </section>
-        
-        <section id="gallery" class="gallery-section">
-            <div class="section-title">
-                <h2>Recent Masterpieces</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="marquee-wrapper">
-                <!-- Row 1: Left Scroll -->
-                <div class="track-window" data-direction="left">
-                    <div class="marquee-track">
-                        <img src="gallery/gallery_1.webp" alt="Gallery 1">
-                        <img src="gallery/gallery_2.webp" alt="Gallery 2">
-                        <img src="gallery/gallery_3.webp" alt="Gallery 3">
-                        <img src="gallery/gallery_4.webp" alt="Gallery 4">
-                        <img src="gallery/gallery_5.webp" alt="Gallery 5">
-                        <img src="gallery/gallery_6.webp" alt="Gallery 6">
-                        <img src="gallery/gallery_7.webp" alt="Gallery 7">
-                        <img src="gallery/gallery_8.webp" alt="Gallery 8">
-                        <img src="gallery/gallery_9.webp" alt="Gallery 9">
-                        <img src="gallery/gallery_10.webp" alt="Gallery 10">
-                        <img src="gallery/gallery_11.webp" alt="Gallery 11">
-                        <img src="gallery/gallery_12.webp" alt="Gallery 12">
-                        <!-- Duplicates -->
-                        <img src="gallery/gallery_1.webp" alt="Gallery 1">
-                        <img src="gallery/gallery_2.webp" alt="Gallery 2">
-                        <img src="gallery/gallery_3.webp" alt="Gallery 3">
-                        <img src="gallery/gallery_4.webp" alt="Gallery 4">
-                        <img src="gallery/gallery_5.webp" alt="Gallery 5">
-                        <img src="gallery/gallery_6.webp" alt="Gallery 6">
-                        <img src="gallery/gallery_7.webp" alt="Gallery 7">
-                        <img src="gallery/gallery_8.webp" alt="Gallery 8">
-                        <img src="gallery/gallery_9.webp" alt="Gallery 9">
-                        <img src="gallery/gallery_10.webp" alt="Gallery 10">
-                        <img src="gallery/gallery_11.webp" alt="Gallery 11">
-                        <img src="gallery/gallery_12.webp" alt="Gallery 12">
-                    </div>
-                </div>
-                
-                <!-- Row 2: Right Scroll -->
-                <div class="track-window" data-direction="right">
-                    <div class="marquee-track">
-                         <img src="gallery/gallery_13.webp" alt="Gallery 13">
-                        <img src="gallery/gallery_14.webp" alt="Gallery 14">
-                        <img src="gallery/gallery_15.webp" alt="Gallery 15">
-                        <img src="gallery/gallery_16.webp" alt="Gallery 16">
-                        <img src="gallery/gallery_17.webp" alt="Gallery 17">
-                        <img src="gallery/gallery_18.webp" alt="Gallery 18">
-                        <img src="gallery/gallery_19.webp" alt="Gallery 19">
-                        <img src="gallery/gallery_20.webp" alt="Gallery 20">
-                        <img src="gallery/gallery_21.webp" alt="Gallery 21">
-                        <img src="gallery/gallery_22.webp" alt="Gallery 22">
-                        <img src="gallery/gallery_23.webp" alt="Gallery 23">
-                        <img src="gallery/gallery_24.webp" alt="Gallery 24">
-                        <img src="gallery/gallery_25.webp" alt="Gallery 25">
-                         <!-- Duplicates -->
-                        <img src="gallery/gallery_13.webp" alt="Gallery 13">
-                        <img src="gallery/gallery_14.webp" alt="Gallery 14">
-                        <img src="gallery/gallery_15.webp" alt="Gallery 15">
-                        <img src="gallery/gallery_16.webp" alt="Gallery 16">
-                        <img src="gallery/gallery_17.webp" alt="Gallery 17">
-                        <img src="gallery/gallery_18.webp" alt="Gallery 18">
-                        <img src="gallery/gallery_19.webp" alt="Gallery 19">
-                        <img src="gallery/gallery_20.webp" alt="Gallery 20">
-                        <img src="gallery/gallery_21.webp" alt="Gallery 21">
-                        <img src="gallery/gallery_22.webp" alt="Gallery 22">
-                        <img src="gallery/gallery_23.webp" alt="Gallery 23">
-                        <img src="gallery/gallery_24.webp" alt="Gallery 24">
-                        <img src="gallery/gallery_25.webp" alt="Gallery 25">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="product-section-divider">
-        
-        <section id="products">
-            <div class="bg-decoration square-1"></div>
-            <div class="bg-decoration square-2"></div>
-            <div class="bg-decoration square-3"></div>
-             <div class="main-product-title" style="text-align: center; margin-bottom: 3rem;">
-                <h1 style="font-size: 3.5rem; font-family: 'Playfair Display', serif; font-weight: 700; color: #333;">Our Product</h1>
-            </div>
-
-             <div class="section-title">
-                <h2>Commercial Division</h2>
-                <div class="divider"></div>
-                <p style="font-family: 'Montserrat', sans-serif; color: #666; font-size: 1rem; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">lobbies - Restaurants - Offices</p>
-            </div>
-            <div class="products-grid">
-                <div class="product-card scroll-from-left">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Lobbies">
-                    </div>
-                    <div class="product-info">
-                        <h3>lobbies</h3>
-                        <p>Security desks wall paneling etc.</p>
-                    </div>
-                </div>
-                <div class="product-card scroll-animate">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" alt="Restaurants">
-                    </div>
-                    <div class="product-info">
-                        <h3>Restaurants</h3>
-                        <p>From wall panelling to tables we got you covered.</p>
-                    </div>
-                </div>
-                <div class="product-card scroll-from-right">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop" alt="Offices">
-                    </div>
-                    <div class="product-info">
-                        <h3>Offices</h3>
-                        <p>Ceilings - Custom Build ins - Commercial Kitchens</p>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="product-section-divider">
-
-            <!-- Custom Cabinetry Section -->
-            <div class="section-title" style="margin-top: 0;">
-                <h2>Custom Cabinetry</h2>
-                <div class="divider"></div>
-                <p style="font-family: 'Montserrat', sans-serif; color: #666; font-size: 1rem; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Kitchens - Closets - Vanities</p>
-            </div>
-            <div class="products-grid">
-                <div class="product-card scroll-from-left">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=800&auto=format&fit=crop" alt="Kitchen Cabinets">
-                    </div>
-                    <div class="product-info">
-                        <h3>Kitchen Cabinets</h3>
-                        <p>Shaker doors - Melamine doors - painted doors...</p>
-                    </div>
-                </div>
-                <div class="product-card scroll-animate">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800&auto=format&fit=crop" alt="Custom Closets">
-                    </div>
-                    <div class="product-info">
-                        <h3>Custom Closets</h3>
-                        <p>Closets organizer - Build in closets...</p>
-                    </div>
-                </div>
-                <div class="product-card scroll-from-right">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" alt="W.C Vanities">
-                    </div>
-                    <div class="product-info">
-                        <h3>W.C Vanities</h3>
-                        <p>Painted-melamine - solid wood...</p>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="product-section-divider">
-
-            <!-- Furniture Section -->
-            <div class="section-title" style="margin-top: 0;">
-                <h2>Furniture</h2>
-                <div class="divider"></div>
-                <p style="font-family: 'Montserrat', sans-serif; color: #666; font-size: 1rem; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Manufactured and shipped all over the world</p>
-            </div>
-            <div class="products-grid">
-                <div class="product-card scroll-from-left">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=800&auto=format&fit=crop" alt="Arm Chair">
-                    </div>
-                    <div class="product-info">
-                        <h3>Arm Chair</h3>
-                        <p>Modern - Antique...</p>
-                    </div>
-                </div>
-                <div class="product-card scroll-animate">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Custom Homes">
-                    </div>
-                    <div class="product-info">
-                        <h3>Custom Homes</h3>
-                        <p>Dinning tables - Living room - salon...</p>
-                    </div>
-                </div>
-                <div class="product-card scroll-from-right">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" alt="Commercial Sites">
-                    </div>
-                    <div class="product-info">
-                        <h3>Commercial Sites</h3>
-                        <p>Restaurants - Clinics - Offices</p>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="product-section-divider">
-
-            <!-- Interior Doors Section -->
-            <div class="section-title" style="margin-top: 0;">
-                <h2>Interior Doors</h2>
-                <div class="divider"></div>
-                <p style="font-family: 'Montserrat', sans-serif; color: #666; font-size: 1rem; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Finish Carpentry</p>
-            </div>
-            <div class="products-grid">
-                <div class="product-card scroll-from-left">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?q=80&w=800&auto=format&fit=crop" alt="Fire rated doors">
-                    </div>
-                    <div class="product-info">
-                        <h3>Fire rated doors</h3>
-                        <p>Custom made for commercial sites</p>
-                    </div>
-                </div>
-                <div class="product-card scroll-animate">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=800&auto=format&fit=crop" alt="Solid Wood doors">
-                    </div>
-                    <div class="product-info">
-                        <h3>Solid Wood doors</h3>
-                        <p>Custom made to the customers desirer</p>
-                    </div>
-                </div>
-                <div class="product-card scroll-from-right">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop" alt="Pre made doors">
-                    </div>
-                    <div class="product-info">
-                        <h3>Pre made doors</h3>
-                        <p>Shaker doors - Hollow doors - Solid doors</p>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="product-section-divider">
-        </section>
-
-        <!-- Reviews Section -->
-        <section id="reviews" class="reviews-section">
-            <div class="container">
-                <div class="reviews-header">
-                    <h2>Reviews</h2>
-                    <div class="google-rating">
-                        <div class="g-logo">
-                            <svg width="20" height="20" viewBox="0 0 24 24">
-                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
-                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
-                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
-                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
-                            </svg>
-                        </div>
-                        <div class="rating-text-wrapper">
-                            <span class="company-name">TEAK INTERNATIONAL INC.</span>
-                            <div class="rating-row">
-                                <span class="rating-score">4.9</span>
-                                <span class="stars">★★★★★</span>
-                                <span class="review-count">94 Reviews</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reviews-carousel-wrapper">
-                    <button class="nav-button prev" aria-label="Previous Review">
-                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
-                    </button>
-                    
-                    <div class="reviews-track" id="reviewsTrack">
-                        <!-- Review 1 -->
-                        <div class="review-card">
-                            <div class="reviewer-avatar">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="Matthew Boumitry">
-                            </div>
-                            <div class="card-stars">★★★★★</div>
-                            <p class="review-text">"The team at Teak did an amazing job from design to installation. They understood exactly what I wanted for my custom closet and delivered beyond my expectations. Highly recommended!"</p>
-                            <a href="#" class="read-more">Read full review ▶</a>
-                            <div class="card-footer">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="g-icon-small" alt="Google" width="18" height="18">
-                                <div class="reviewer-info">
-                                    <span class="reviewer-name">Matthew Boumitry</span>
-                                    <span class="review-date">2026-01-12</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Review 2 -->
-                        <div class="review-card">
-                            <div class="reviewer-avatar">
-                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt="Sam Boumitry">
-                            </div>
-                            <div class="card-stars">★★★★★</div>
-                            <p class="review-text">"I had the pleasure to work with TEAK INTERNATIONAL & experience their professionalism first hand. The quality of the solid wood doors they manufactured for my home is outstanding."</p>
-                            <a href="#" class="read-more">Read full review ▶</a>
-                            <div class="card-footer">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="g-icon-small" alt="Google" width="18" height="18">
-                                <div class="reviewer-info">
-                                    <span class="reviewer-name">Sam Boumitry</span>
-                                    <span class="review-date">2026-01-05</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Review 3 -->
-                        <div class="review-card">
-                            <div class="reviewer-avatar">
-                                <div class="avatar-placeholder" style="background-color: #1a237e;">ZZ</div>
-                            </div>
-                            <div class="card-stars">★★★★★</div>
-                            <p class="review-text">"Prompt, professional, and quality service with very satisfactory results. They renovated our entire office space including custom desks and wall paneling. Will definitely use them again."</p>
-                            <a href="#" class="read-more">Read full review ▶</a>
-                            <div class="card-footer">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="g-icon-small" alt="Google" width="18" height="18">
-                                <div class="reviewer-info">
-                                    <span class="reviewer-name">Za Za</span>
-                                    <span class="review-date">2026-01-04</span>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Review 4 (Extra for scrolling demo) -->
-                         <div class="review-card">
-                            <div class="reviewer-avatar">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Sarah Jenkins">
-                            </div>
-                            <div class="card-stars">★★★★★</div>
-                            <p class="review-text">"Absolutely in love with my new kitchen cabinets. The craftsmanship is top-notch and the finish is flawless. Thank you Chris and the team!"</p>
-                            <a href="#" class="read-more">Read full review ▶</a>
-                            <div class="card-footer">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" class="g-icon-small" alt="Google" width="18" height="18">
-                                <div class="reviewer-info">
-                                    <span class="reviewer-name">Sarah Jenkins</span>
-                                    <span class="review-date">2025-12-20</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="nav-button next" aria-label="Next Review">
-                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg>
-                    </button>
-                </div>
-
-                <div class="carousel-dots" id="reviewDots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
-                    <span class="dot" data-index="3"></span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Clients Section -->
-        <section id="clients" class="clients-section">
-            <div class="section-title">
-                <h2>Our Clients</h2>
-                <div class="divider"></div>
-            </div>
-            
-            <div class="track-window" data-direction="left">
-                <div class="marquee-track">
-                    <!-- Set 1 -->
-                    <img src="clients/Ksara.png" alt="Ksara">
-                    <img src="clients/bmo.webp" alt="BMO">
-                    <img src="clients/cristal upscale.jpg" alt="Cristal">
-                    <img src="clients/goodlife.webp" alt="Goodlife Fitness">
-                    <img src="clients/google upscale.jpg" alt="Google">
-                    <img src="clients/najjar.png" alt="Najjar">
-                    <img src="clients/ssf.webp" alt="SSF">
-                    <img src="clients/tim hortons.webp" alt="Tim Hortons">
-                    
-                    <!-- Set 2 (Duplicates) -->
-                    <img src="clients/Ksara.png" alt="Ksara">
-                    <img src="clients/bmo.webp" alt="BMO">
-                    <img src="clients/cristal upscale.jpg" alt="Cristal">
-                    <img src="clients/goodlife.webp" alt="Goodlife Fitness">
-                    <img src="clients/google upscale.jpg" alt="Google">
-                    <img src="clients/najjar.png" alt="Najjar">
-                    <img src="clients/ssf.webp" alt="SSF">
-                    <img src="clients/tim hortons.webp" alt="Tim Hortons">
-                </div>
-            </div>
-        </section>
-
-        <hr class="product-section-divider">
-
-        <!-- Partners Section -->
-        <section id="partners" class="clients-section">
-            <div class="section-title">
-                <h2>Our Partners</h2>
-                <div class="divider"></div>
-            </div>
-            
-            <div class="track-window" data-direction="right">
-                <div class="marquee-track">
-                    <!-- Set 1 -->
-                    <img src="partners/Formica.png" alt="Formica">
-                    <img src="partners/agt.webp" alt="AGT">
-                    <img src="partners/blum.webp" alt="Blum">
-                    <img src="partners/egger.webp" alt="Egger">
-                    <img src="partners/homedepot.webp" alt="Home Depot">
-                    <img src="partners/milesi.webp" alt="Milesi">
-                    <img src="partners/richelieu.webp" alt="Richelieu">
-                    <img src="partners/salice.webp" alt="Salice">
-                    
-                    <!-- Set 2 (Duplicates) -->
-                    <img src="partners/Formica.png" alt="Formica">
-                    <img src="partners/agt.webp" alt="AGT">
-                    <img src="partners/blum.webp" alt="Blum">
-                    <img src="partners/egger.webp" alt="Egger">
-                    <img src="partners/homedepot.webp" alt="Home Depot">
-                    <img src="partners/milesi.webp" alt="Milesi">
-                    <img src="partners/richelieu.webp" alt="Richelieu">
-                    <img src="partners/salice.webp" alt="Salice">
-
-                    <!-- Set 3 (Duplicates) -->
-                    <img src="partners/Formica.png" alt="Formica">
-                    <img src="partners/agt.webp" alt="AGT">
-                    <img src="partners/blum.webp" alt="Blum">
-                    <img src="partners/egger.webp" alt="Egger">
-                    <img src="partners/homedepot.webp" alt="Home Depot">
-                    <img src="partners/milesi.webp" alt="Milesi">
-                    <img src="partners/richelieu.webp" alt="Richelieu">
-                    <img src="partners/salice.webp" alt="Salice">
-
-                    <!-- Set 4 (Duplicates) -->
-                    <img src="partners/Formica.png" alt="Formica">
-                    <img src="partners/agt.webp" alt="AGT">
-                    <img src="partners/blum.webp" alt="Blum">
-                    <img src="partners/egger.webp" alt="Egger">
-                    <img src="partners/homedepot.webp" alt="Home Depot">
-                    <img src="partners/milesi.webp" alt="Milesi">
-                    <img src="partners/richelieu.webp" alt="Richelieu">
-                    <img src="partners/salice.webp" alt="Salice">
-                </div>
-            </div>
-        </section>
-
-        <hr class="product-section-divider">
-
-         <section id="contact" style="text-align: center; padding: 4rem 0;">
-             <div class="section-title">
-                <h2>Ready to Start?</h2>
-                <div class="divider"></div>
-                <p style="margin-top: 1rem; color: #666;">Contact us today to discuss your project needs.</p>
-            </div>
-            
-            <a href="request-call.html" class="cta-button">Request a Call</a>
-         </section>
 
         <footer>
             <div class="footer-container">
@@ -564,9 +95,8 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about">Bio</a></li>
+                        <li><a href="request-call.html">Contact</a></li>
                     </ul>
                 </div>
                 <div>

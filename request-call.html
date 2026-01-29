@@ -76,8 +76,13 @@
         }
 
         .option-card h3 {
-            margin: 0;
+            margin: 0 0 0.5rem 0;
             font-family: 'Playfair Display', serif;
+            min-height: 3.6rem; /* Ensures alignment even if one title is 2 lines */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
         }
 
         .form-section {
@@ -169,11 +174,11 @@
 
         <div class="option-cards">
             <div class="option-card" id="option1Btn" onclick="selectOption(1)">
-                <h3>B2B</h3>
+                <h3>Project Manager</h3>
                 <p style="font-size: 0.9rem; margin-top: 0.5rem;">Business to Business</p>
             </div>
             <div class="option-card" id="option2Btn" onclick="selectOption(2)">
-                <h3>B2C</h3>
+                <h3>Consumer</h3>
                 <p style="font-size: 0.9rem; margin-top: 0.5rem;">Business to Consumer</p>
             </div>
         </div>
@@ -182,25 +187,6 @@
         <div id="formSection" class="form-section">
             <form id="projectForm" onsubmit="submitForm(event)">
                 <input type="hidden" id="customer_type" name="customer_type" value="B2B">
-
-                <!-- Contact Info -->
-                <div class="question-group">
-                    <label class="question-label">Contact Information</label>
-                    <div class="contact-inputs">
-                        <div class="form-group">
-                            <label for="fullname">Full Name</label>
-                            <input type="text" id="fullname" name="fullname" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Question 1: Project Type (B2B Only) -->
                 <div class="question-group" id="group-project-type">
@@ -283,6 +269,25 @@
                             <input type="radio" name="drawings" value="No">
                             No
                         </label>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="question-group">
+                    <label class="question-label">Contact Information</label>
+                    <div class="contact-inputs">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
                     </div>
                 </div>
 
@@ -487,6 +492,20 @@
             // Send to Google Script
             // We use URLSearchParams and no-cors mode to avoid CORS errors
             const params = new URLSearchParams();
+            
+            // Add Date/Time of submission
+            const now = new Date();
+            const dateStr = now.toLocaleString('en-US', { 
+                year: 'numeric', 
+                month: '2-digit', 
+                day: '2-digit', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true 
+            });
+            params.append('Date', dateStr);
+
             params.append('customer_type', data.customer_type);
             params.append('fullname', data.fullname);
             params.append('email', data.email);
